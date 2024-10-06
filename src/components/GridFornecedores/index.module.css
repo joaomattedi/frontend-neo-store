@@ -1,7 +1,16 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .gridItem {
@@ -10,7 +19,24 @@
   border-radius: 4px;
 }
 
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+}
+
 .pageButton {
   color: white;
   cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 0;
+  background-color: #0070f3;
+}
+
+.pageButton:hover {
+  background-color: #004ba1;
+}
+
+.pageButton:disabled {
+  background-color: #a7cffd;
 }

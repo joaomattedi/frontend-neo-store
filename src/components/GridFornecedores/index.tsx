@@ -55,17 +55,21 @@ export default function GridFornecedores() {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className={styles.gridContainer}>
-      {fornecedores.map((fornecedor, index) => (
-        <div key={index} className={styles.gridItem}>
-            <h3>{fornecedor.name}</h3>
-            <p>{fornecedor.email}</p>
-            <p>{fornecedor.description}</p>
-            <p>{fornecedor.cnpj}</p>
-            <button>Editar</button>
-        </div>
-      ))}
-      <div>
+    <div className={styles.wrapper}>
+      <div className={styles.gridContainer}>
+        {fornecedores.map((fornecedor, index) => (
+          <div key={index} className={styles.gridItem}>
+            <div>
+              <h3>{fornecedor.name}</h3>
+              <p>{fornecedor.email}</p>
+              <p>{fornecedor.description}</p>
+              <p>{fornecedor.cnpj}</p>
+            </div>
+            <button className={styles.pageButton}>Editar</button>
+          </div>
+        ))}
+      </div>
+      <div className={styles.buttonContainer}>
         <button onClick={handlePreviousPage} disabled={currentPage === 1} className={styles.pageButton}>
             Anterior
         </button>
