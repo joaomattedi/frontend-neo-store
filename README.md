@@ -51,3 +51,11 @@ Este é o frontend do NeoStore. O projeto foi desenvolvido utilizando React com 
 - Listagem paginada de fornecedores
 - Edição e exclusão de fornecedores
 - Upload de arquivo JSON para cadastro em massa de fornecedores
+
+## Decisões de Desenvolvimento
+
+Para iniciar o projeto em React, entrei na documentação do React e verifiquei que o framework mais recomendado era o Next e resolvi experimentar. A ideia de server-side rendering me deixou empolgado.
+
+A estruturação de pastas e arquitetura é um padrão que venho seguindo há alguns anos e vejo que é altamente utilizada no mercado por sua organização e separação de responsabilidade, trazendo mais facilidade para desenvolver novas features.
+
+Como no backend desta aplicação, optei por utilizar o mínimo de bibliotecas externas para praticar e retificar meus conhecimentos em React.
