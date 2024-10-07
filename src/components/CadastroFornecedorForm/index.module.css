@@ -5,6 +5,7 @@
   background-color: white;
   padding: 30px 20px;
   border-radius: 1rem;
+  max-width: 520px;
 }
 
 .inputField {

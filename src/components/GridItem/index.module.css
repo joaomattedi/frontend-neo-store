@@ -11,3 +11,9 @@
 .pageButton:hover {
   background-color: #1e5697;
 }
+
+.fornecedorCard {
+  background-color: white;
+  border-radius: 5px;
+  padding: 8px 16px;
+}

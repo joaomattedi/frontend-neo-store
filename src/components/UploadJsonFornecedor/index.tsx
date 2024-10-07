@@ -4,6 +4,8 @@ import { Fornecedor } from '@/interfaces/Fornecedor';
 import { createManyFornecedores } from '@/services/fornecedors.service';
 import React, { useState } from 'react'
 
+import styles from "./index.module.css"
+
 interface ImportJsonResponse {
   cadastrosCriados: Fornecedor[]
   cadastrosComErro: Fornecedor[]
@@ -51,11 +53,13 @@ export default function UploadFornecedores() {
   };
 
   return (
-    <div>
-      <input type="file" accept=".json" onChange={handleFileChange} />
-      <button onClick={handleSubmit}>Upload JSON</button>
+    <div className={styles.container}>
+      <div>
+        <input type="file" accept=".json" onChange={handleFileChange} />
+        <button onClick={handleSubmit}>Upload JSON</button>
+      </div>
       {result && (
-        <div>
+        <div className={styles.resultContainer}>
           <h3>Cadastros Criados:</h3>
           <ul>
             {result.cadastrosCriados.map((fornecedor, index) => (

@@ -21,7 +21,7 @@ interface FornecedorProps {
 
 export default function FornecedorCard({ id, name, email, description, cnpj, onDelete, onEdit }: FornecedorProps) {
   return (
-    <div className="fornecedor-card">
+    <div className={styles.fornecedorCard}>
       <h3>{name}</h3>
       <p>Email: {email}</p>
       <p>Description: {description}</p>
