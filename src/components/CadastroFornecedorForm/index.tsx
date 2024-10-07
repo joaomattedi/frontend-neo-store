@@ -5,14 +5,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './index.module.css';
 import { validarCNPJ } from '@/utils/cnpj-utils';
 import { validarEmail } from '@/utils/email-utils';
-
-interface Fornecedor {
-  id?: number;
-  name: string;
-  email: string;
-  description: string;
-  cnpj: string;
-}
+import { Fornecedor } from '@/interfaces/Fornecedor';
 
 interface CadastroFornecedorFormProps {
   fornecedorParaEditar?: Fornecedor | null;

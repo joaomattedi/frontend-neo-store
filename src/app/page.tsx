@@ -1,15 +1,17 @@
 import GridFornecedores from "@/components/GridFornecedores";
 import CadastroFornecedorForm from "@/components/CadastroFornecedorForm";
+import UploadJsonFornecedor from "@/components/UploadJsonFornecedor";
 
 export default function Home() {  
   return (
     <div>
-      <aside>
+      <div>
         <CadastroFornecedorForm />
-      </aside>
-      <main>
+        <UploadJsonFornecedor />
+      </div>
+      <div>
        <GridFornecedores/>
-      </main>
+      </div>
     </div>
   );
 }

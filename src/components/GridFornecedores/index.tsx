@@ -6,14 +6,7 @@ import { deleteFornecedor, getFornecedores } from '@/services/fornecedors.servic
 import FornecedorCard from '../GridItem';
 import Modal from '../Modal';
 import CadastroFornecedorForm from '../CadastroFornecedorForm';
-
-interface Fornecedor {
-  id: number;
-  name: string;
-  email: string;
-  description: string;
-  cnpj: string;
-}
+import { Fornecedor } from '@/interfaces/Fornecedor';
 
 export default function GridFornecedores() {
   const [fornecedores, setFornecedores] = useState<Fornecedor[]>([]);
@@ -90,7 +83,7 @@ export default function GridFornecedores() {
         {fornecedores.map((fornecedor) => (
           <FornecedorCard
             key={fornecedor.id}
-            id={fornecedor.id}
+            id={fornecedor.id!}
             name={fornecedor.name}
             email={fornecedor.email}
             description={fornecedor.description}

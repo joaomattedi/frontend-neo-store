@@ -1,4 +1,5 @@
 import { API_URL } from "@/config/config";
+import { Fornecedor } from "@/interfaces/Fornecedor";
 
 export const createFornecedor = async (fornecedor: { name: string; email: string; description: string; cnpj: string }) => {
   const response = await fetch(`${API_URL}/fornecedores`, {
@@ -9,12 +10,22 @@ export const createFornecedor = async (fornecedor: { name: string; email: string
     body: JSON.stringify([fornecedor]),
   });
 
-  if (!response.ok) {
-    throw new Error('Erro ao criar fornecedor: ' + response.statusText);
-  }
-
   return await response.json();
 };
+
+export const createManyFornecedores = async (fornecedores: Fornecedor) => {
+  const response = await fetch(`${API_URL}/fornecedores`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(fornecedores),
+  });
+
+  console.log("teste");
+  
+  return await response.json();
+}
 
 export const getFornecedores = async (page: number = 1, size: number = 5) => {
   try {
