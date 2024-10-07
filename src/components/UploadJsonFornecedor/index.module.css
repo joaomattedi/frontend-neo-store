@@ -16,10 +16,19 @@
   font-weight: bold;
 }
 
-.container input[type=file]::file-selector-button:hover {
+.container input[type=file]::file-selector-button:hover, .container button:hover {
   background-color: rgb(33, 69, 214);
 }
 
 .resultContainer ul{
   list-style: none;
+}
+
+.title {
+  padding-bottom: 10px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-evenly;
 }

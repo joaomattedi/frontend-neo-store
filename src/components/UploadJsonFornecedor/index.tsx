@@ -54,7 +54,10 @@ export default function UploadFornecedores() {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.title}>
+        <h3>Cadastro de fornecedores em massa (JSON)</h3>
+      </div>
+      <div className={styles.buttonsContainer}>
         <input type="file" accept=".json" onChange={handleFileChange} />
         <button onClick={handleSubmit}>Upload JSON</button>
       </div>
