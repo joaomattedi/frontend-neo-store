@@ -1,0 +1,13 @@
+.pageButton {
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 0;
+  background-color: #2770c4;
+  margin-right: 4px;
+}
+
+.pageButton:hover {
+  background-color: #1e5697;
+}

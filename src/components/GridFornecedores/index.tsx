@@ -2,10 +2,13 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
-import { getFornecedores } from '@/services/fornecedors.service';
+import { deleteFornecedor, getFornecedores } from '@/services/fornecedors.service';
+import FornecedorCard from '../GridItem';
+import Modal from '../Modal';
+import CadastroFornecedorForm from '../CadastroFornecedorForm';
 
 interface Fornecedor {
-  id?: number;
+  id: number;
   name: string;
   email: string;
   description: string;
@@ -18,6 +21,8 @@ export default function GridFornecedores() {
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [disabledButtons, setDisableButtons] = useState(false);
+  const [fornecedorParaEditar, setFornecedorParaEditar] = useState<Fornecedor | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchFornecedores = async () => {
     try {
@@ -37,6 +42,11 @@ export default function GridFornecedores() {
     }
   };
 
+  const handleEdit = (fornecedor: Fornecedor) => {
+    setFornecedorParaEditar(fornecedor); // Define o fornecedor a ser editado
+    setIsModalOpen(true); // Abre o modal
+  };
+
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
   };
@@ -45,6 +55,26 @@ export default function GridFornecedores() {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
+  };
+
+  const handleDeleteFornecedor = async (id: number) => {
+    try {
+      await deleteFornecedor(id);
+      setFornecedores(fornecedores.filter(fornecedor => fornecedor.id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleSaveFornecedor = (fornecedor: Fornecedor) => {
+    if (fornecedor.id) {
+      const updatedFornecedores = fornecedores.map((f) =>
+        f.id === fornecedor.id ? fornecedor : f
+      );
+      setFornecedores(updatedFornecedores);
+    }
+    setFornecedorParaEditar(null);
+    setIsModalOpen(false);
   };
   
   useEffect(() => {
@@ -57,16 +87,17 @@ export default function GridFornecedores() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.gridContainer}>
-        {fornecedores.map((fornecedor, index) => (
-          <div key={index} className={styles.gridItem}>
-            <div>
-              <h3>{fornecedor.name}</h3>
-              <p>{fornecedor.email}</p>
-              <p>{fornecedor.description}</p>
-              <p>{fornecedor.cnpj}</p>
-            </div>
-            <button className={styles.pageButton}>Editar</button>
-          </div>
+        {fornecedores.map((fornecedor) => (
+          <FornecedorCard
+            key={fornecedor.id}
+            id={fornecedor.id}
+            name={fornecedor.name}
+            email={fornecedor.email}
+            description={fornecedor.description}
+            cnpj={fornecedor.cnpj}
+            onDelete={handleDeleteFornecedor}
+            onEdit={handleEdit}
+          />
         ))}
       </div>
       <div className={styles.buttonContainer}>
@@ -77,6 +108,9 @@ export default function GridFornecedores() {
             Próxima
         </button>
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <CadastroFornecedorForm fornecedorParaEditar={fornecedorParaEditar} onSave={handleSaveFornecedor} />
+      </Modal>
     </div>
   );
 }
