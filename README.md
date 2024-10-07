@@ -24,10 +24,9 @@ Este é o frontend do NeoStore. O projeto foi desenvolvido utilizando React com 
 
 ### Passos para Iniciar o Projeto
 
-1. Faça um fork deste repositório:
-2. Clone o repositório:
+1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuprojeto/frontend-neo-store.git
+   git clone https://github.com/joaomattedi/frontend-neo-store.git
 
 3. Acesse a pasta pelo terminal:
    ```bash
